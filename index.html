@@ -3,15 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Qurat ul Ain - BS IT Graduate, Full stack developer and web scraping enthusiast." />
+  <meta name="description" content="Portfolio of Qurat ul Ain - full stack developer and web scraping enthusiast." />
   <title>Qurat ul Ain | Developer Portfolio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315803D'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' text-anchor='middle' fill='white'%3EQA%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!--HEADER-->
+  <!-- HEADER -->
   <header class="header">
     <nav class="nav container" aria-label="Main navigation">
-      <a href="#home" class="logo">QuA<span>.</span></a>
+      <a href="#home" class="logo" aria-label="Qurat ul Ain - home">
+        <svg class="logo-mark" viewBox="0 0 48 48" width="38" height="38" aria-hidden="true">
+          <rect width="48" height="48" rx="12"></rect>
+          <text x="24" y="32" text-anchor="middle">QA</text>
+        </svg>
+        <span class="logo-text">Qurat ul Ain</span>
+      </a>
 
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
@@ -33,7 +40,7 @@
       <div class="hero-text">
         <p class="eyebrow">Hi, I'm</p>
         <h1>Qurat ul Ain</h1>
-        <h2>BS IT Graduate &amp; Full Stack Developer</h2>
+        <h2>Full Stack Developer</h2>
         <p class="lead">
           I build backend systems with FastAPI, scrape and process real-world data,
           and integrate everything into working web applications.
@@ -50,19 +57,18 @@
       <h2 class="section-title">About Me</h2>
       <div class="about-grid">
         <p>
-          A fresh BS Information Technology graduate from the University of the Punjab, Lahore,
+          I am a fresh BS Information Technology graduate from the University of the Punjab, Lahore,
           with a strong interest in both Frontend and Backend Development. I enjoy turning ideas
           into working software, especially backend APIs, data collection and system integration.
         </p>
         <p>
-          I have experience with HTML, CSS, JavaScript, React.js, Python, FastAPI and
-          PostgreSQL through my academic learning and Final Year Project, <strong>SmartReview</strong>
-          is a web-based application that automatically collect beauty product reviews from multiple
-          platforms and analyze them using a fine tuned mBERT sentiment analysis model. Through this
-          project, I have gained practical experience in frontend development, backend APIs, database
-          integration, AI-driven tools and web application development.I am now looking for
-          hands-on internship experience where I can work on real projects and grow
-          as an engineer.
+          I have experience with HTML, CSS, JavaScript, React.js, Python, FastAPI and PostgreSQL
+          through my academic learning and Final Year Project, <strong>SmartReview</strong> is a web-
+          based application that automatically collect beauty product reviews from multiple platforms
+          and analyze them using a fine tuned mBERT sentiment analysis model. Through this project,
+          I have gained practical experience in frontend development, backend APIs, database integration,
+          AI-driven tools and web application development.I am now looking for hands-on internship
+          experience where I can work on real projects and grow as an engineer.
         </p>
       </div>
     </section>
@@ -82,43 +88,41 @@
     </section>
 
     <!-- PROJECTS -->
+    <!-- Project cards are generated from the `projects` list in script.js.
+         To add a new project, add one more entry there; no HTML changes needed. -->
     <section id="projects" class="section container">
       <h2 class="section-title">Featured Projects</h2>
-      <div class="projects-grid">
-
-        <article class="card project-card">
-          <h3>SmartReview</h3>
-          <p>Sentiment analysis platform for Pakistani beauty product reviews.</p>
-          <ul class="tags"><li>FastAPI</li><li>Scraping</li><li>NLP</li></ul>
-          <button class="btn btn-small" data-project="smartreview">Details</button>
-        </article>
-
-        <article class="card project-card">
-          <h3>Project Two</h3>
-          <p>Short description of another project you have built.</p>
-          <ul class="tags"><li>Python</li><li>API</li></ul>
-          <button class="btn btn-small" data-project="project2">Details</button>
-        </article>
-
-        <article class="card project-card">
-          <h3>This Portfolio</h3>
-          <p>Responsive portfolio with theme toggle, built with HTML, CSS and JavaScript.</p>
-          <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
-          <button class="btn btn-small" data-project="portfolio">Details</button>
-        </article>
-
-      </div>
+      <div class="projects-grid" id="projects-grid"></div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section container">
       <h2 class="section-title">Contact</h2>
       <p class="center">Interested in working together or have a question? Reach out.</p>
-      <div class="contact-links">
-        <a class="btn btn-primary" href="quratulainain6@gmail.com">Email</a>
-        <a class="btn btn-outline" href="https://www.linkedin.com/in/qurat-ul-ain-aina-707948293/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn btn-outline" href="https://github.com/QuratulAin-809/" target="_blank" rel="noopener">GitHub</a>
-      </div>
+      <ul class="social-links">
+        <li>
+          <a class="social-link" href="quratulainaina6@gmail.com" aria-label="Email" title="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <polyline points="3,7 12,13 21,7"></polyline>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="social-link" href="https://www.linkedin.com/in/qurat-ul-ain-aina-707948293/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="social-link" href="https://github.com/QuratulAin-809" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
     </section>
   </main>
 
