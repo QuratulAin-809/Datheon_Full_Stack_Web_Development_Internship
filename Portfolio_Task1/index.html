@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Qurat ul Ain - full stack developer and web scraping enthusiast." />
+  <meta name="description" content="Portfolio of Qurat ul Ain - BS IT graduate, full stack developer and web scraping enthusiast." />
   <title>Qurat ul Ain | Developer Portfolio</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315803D'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' text-anchor='middle' fill='white'%3EQA%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="style.css" />
@@ -88,8 +88,6 @@
     </section>
 
     <!-- PROJECTS -->
-    <!-- Project cards are generated from the `projects` list in script.js.
-         To add a new project, add one more entry there; no HTML changes needed. -->
     <section id="projects" class="section container">
       <h2 class="section-title">Featured Projects</h2>
       <div class="projects-grid" id="projects-grid"></div>
@@ -138,6 +136,35 @@
       <p id="modal-desc"></p>
       <ul id="modal-tags" class="tags"></ul>
       <div id="modal-links" class="modal-links"></div>
+    </div>
+  </div>
+
+  <!-- ADD PROJECT MODAL -->
+  <div id="add-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="add-title" hidden>
+    <div class="modal-content">
+      <button id="add-close" class="icon-btn modal-close" aria-label="Close dialog">✕</button>
+      <h3 id="add-title">Add a new project</h3>
+      <form id="add-form" class="form">
+        <label>Title
+          <input type="text" name="title" required maxlength="60" />
+        </label>
+        <label>Short summary
+          <input type="text" name="summary" required maxlength="120" />
+        </label>
+        <label>Description
+          <textarea name="desc" rows="3" required maxlength="500"></textarea>
+        </label>
+        <label>Tags (comma separated)
+          <input type="text" name="tags" placeholder="Python, PostgreSQL" />
+        </label>
+        <label>Link (optional)
+          <input type="url" name="url" placeholder="https://github.com/your-username/your-repo" />
+        </label>
+        <p class="form-note">
+          Projects added here are saved in your browser only.
+        </p>
+        <button type="submit" class="btn btn-primary">Add project</button>
+      </form>
     </div>
   </div>
 
