@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in | Datheon Market</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23a78bfa'/%3E%3Cpath d='M16 22h6l5 18h20l4-13H26' fill='none' stroke='%232e1065' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='30' cy='48' r='3.5' fill='%232e1065'/%3E%3Ccircle cx='44' cy='48' r='3.5' fill='%232e1065'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Datheon Market home">
+        <svg class="brand-mark" viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+          <rect width="48" height="48" rx="12"></rect>
+          <path d="M12 16h4l4 14h14l3-10H18"></path>
+          <circle cx="22" cy="35" r="2.5"></circle>
+          <circle cx="32" cy="35" r="2.5"></circle>
+        </svg>
+        <span>Datheon Market</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Shop</a>
+        <a href="profile.html#orders">Orders</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark and light theme">🌙</button>
+        <span id="auth-slot"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="panel">
+      <div class="tabs" role="tablist" aria-label="Account">
+        <button id="tab-signin" class="tab active" type="button" role="tab" aria-selected="true" aria-controls="panel-signin">Sign in</button>
+        <button id="tab-signup" class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-signup" tabindex="-1">Create account</button>
+      </div>
+
+      <div id="panel-signin" role="tabpanel" aria-labelledby="tab-signin">
+        <h1 class="page-title">Welcome back</h1>
+        <form id="signin-form" class="form" novalidate>
+          <label>Email
+            <input type="email" name="email" required maxlength="120" autocomplete="email" />
+          </label>
+          <label>Password
+            <input type="password" name="password" required maxlength="100" autocomplete="current-password" />
+          </label>
+          <p id="signin-error" class="form-error" role="alert" hidden></p>
+          <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        </form>
+      </div>
+
+      <div id="panel-signup" role="tabpanel" aria-labelledby="tab-signup" hidden>
+        <h1 class="page-title">Create your account</h1>
+        <form id="signup-form" class="form" novalidate>
+          <label>Full name
+            <input type="text" name="name" required maxlength="80" autocomplete="name" />
+          </label>
+          <label>Email
+            <input type="email" name="email" required maxlength="120" autocomplete="email" />
+          </label>
+          <label>Password (at least 8 characters)
+            <input type="password" name="password" required minlength="8" maxlength="100" autocomplete="new-password" />
+          </label>
+          <p id="signup-error" class="form-error" role="alert" hidden></p>
+          <button type="submit" class="btn btn-primary btn-block">Create account</button>
+        </form>
+      </div>
+
+      <p class="demo-note">Demo only: accounts are saved in this browser and are not a real login. Don't reuse a password from another site.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Demo store for the Datheon internship.</p>
+  </footer>
+
+  <script src="common.js"></script>
+  <script src="account.js"></script>
+</body>
+</html>

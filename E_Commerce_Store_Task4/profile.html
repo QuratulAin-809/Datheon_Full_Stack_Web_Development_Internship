@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your profile | Datheon Market</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23a78bfa'/%3E%3Cpath d='M16 22h6l5 18h20l4-13H26' fill='none' stroke='%232e1065' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='30' cy='48' r='3.5' fill='%232e1065'/%3E%3Ccircle cx='44' cy='48' r='3.5' fill='%232e1065'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Datheon Market home">
+        <svg class="brand-mark" viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+          <rect width="48" height="48" rx="12"></rect>
+          <path d="M12 16h4l4 14h14l3-10H18"></path>
+          <circle cx="22" cy="35" r="2.5"></circle>
+          <circle cx="32" cy="35" r="2.5"></circle>
+        </svg>
+        <span>Datheon Market</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Shop</a>
+        <a href="profile.html#orders" aria-current="page">Orders</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark and light theme">🌙</button>
+        <span id="auth-slot"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page page-wide">
+    <h1 id="greeting" class="page-title">Your profile</h1>
+
+    <section class="panel" aria-labelledby="details-title">
+      <h2 id="details-title" class="panel-title">Your details</h2>
+      <form id="profile-form" class="form" novalidate>
+        <label>Email
+          <input type="email" id="profile-email" readonly />
+        </label>
+        <label>Full name
+          <input type="text" name="name" required maxlength="80" autocomplete="name" />
+        </label>
+        <label>Phone (optional)
+          <input type="tel" name="phone" maxlength="30" autocomplete="tel" />
+        </label>
+        <label>Delivery address
+          <textarea name="address" rows="3" maxlength="200" autocomplete="street-address"></textarea>
+        </label>
+        <p id="profile-msg" class="form-msg" role="status" hidden></p>
+        <div class="row-actions">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="orders" class="panel" aria-labelledby="orders-title">
+      <h2 id="orders-title" class="panel-title">Order history</h2>
+      <p id="orders-empty" class="empty-note" hidden>
+        No orders yet. <a href="index.html">Start shopping</a>.
+      </p>
+      <ul id="orders-list" class="orders-list"></ul>
+    </section>
+
+    <section class="panel" aria-labelledby="account-title">
+      <h2 id="account-title" class="panel-title">Account</h2>
+      <div class="row-actions">
+        <button id="signout-btn" class="btn" type="button">Sign out</button>
+        <button id="delete-btn" class="btn btn-danger" type="button">Delete account</button>
+      </div>
+      <p class="demo-note">Demo only: your account and orders are saved in this browser, not on a server.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Demo store for the Datheon internship.</p>
+  </footer>
+
+  <script src="common.js"></script>
+  <script src="profile.js"></script>
+</body>
+</html>

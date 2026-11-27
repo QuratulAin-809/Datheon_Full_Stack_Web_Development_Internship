@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Demo e-commerce storefront with category filtering, search, a slide-out cart and a simulated checkout. Products come from FakeStoreAPI." />
+  <title>Datheon Market | Demo Store</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23a78bfa'/%3E%3Cpath d='M16 22h6l5 18h20l4-13H26' fill='none' stroke='%232e1065' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='30' cy='48' r='3.5' fill='%232e1065'/%3E%3Ccircle cx='44' cy='48' r='3.5' fill='%232e1065'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Datheon Market home">
+        <svg class="brand-mark" viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+          <rect width="48" height="48" rx="12"></rect>
+          <path d="M12 16h4l4 14h14l3-10H18"></path>
+          <circle cx="22" cy="35" r="2.5"></circle>
+          <circle cx="32" cy="35" r="2.5"></circle>
+        </svg>
+        <span>Datheon Market</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main">
+        <a href="#top" data-nav="home" aria-current="page">Home</a>
+        <a href="#products" data-nav="shop">Shop</a>
+        <a href="profile.html#orders">Orders</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark and light theme">🌙</button>
+        <span id="auth-slot"></span>
+        <button id="cart-button" class="cart-btn" type="button" aria-label="Open cart" aria-haspopup="dialog" aria-controls="cart-drawer">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 4h2.5l2.2 11h10.6l2-8H6.4"></path>
+            <circle cx="9" cy="19.5" r="1.4"></circle>
+            <circle cx="17" cy="19.5" r="1.4"></circle>
+          </svg>
+          <span id="cart-badge" class="badge-count" hidden>0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="shop">
+    <section class="intro">
+      <h1>Shop the collection</h1>
+      <p>A demo storefront. Products are loaded from FakeStoreAPI and no real orders are placed.</p>
+      <a class="btn btn-primary intro-btn" href="#products">Shop now</a>
+    </section>
+
+    <div id="notice" class="notice" role="status" hidden></div>
+
+    <section id="products" class="toolbar" aria-label="Filter and search products">
+      <div class="filters" id="category-filters" role="group" aria-label="Filter by category">
+        <button class="chip active" type="button" data-category="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-category="Electronics" aria-pressed="false">Electronics</button>
+        <button class="chip" type="button" data-category="Jewelry" aria-pressed="false">Jewelry</button>
+        <button class="chip" type="button" data-category="Clothing" aria-pressed="false">Clothing</button>
+      </div>
+      <div class="toolbar-right">
+        <label class="field">
+          <span class="sr-only">Search products</span>
+          <input id="search-input" type="search" placeholder="Search products..." autocomplete="off" />
+        </label>
+        <label class="field">
+          <span class="sr-only">Sort products</span>
+          <select id="sort-select">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="rating">Top rated</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <p id="result-count" class="result-count" aria-live="polite"></p>
+
+    <section aria-label="Products">
+      <div id="product-grid" class="product-grid"></div>
+      <div id="status" class="status" hidden></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Demo store for the Datheon internship. Product data from <a href="https://fakestoreapi.com/products" target="_blank" rel="noopener">FakeStoreAPI</a>. Your cart is saved in this browser.</p>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div id="overlay" class="overlay" hidden></div>
+  <aside id="cart-drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true">
+    <div class="drawer-head">
+      <h2 id="cart-title">Your cart</h2>
+      <button id="cart-close" class="icon-btn" type="button" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <p id="cart-empty" class="cart-empty">Your cart is empty. Add something you like.</p>
+      <ul id="cart-items" class="cart-items"></ul>
+    </div>
+
+    <div class="drawer-foot" id="cart-foot">
+      <p id="shipping-note" class="shipping-note"></p>
+      <dl class="totals">
+        <div><dt>Subtotal</dt><dd id="sum-subtotal">$0.00</dd></div>
+        <div><dt>Shipping</dt><dd id="sum-shipping">$0.00</dd></div>
+        <div><dt>Tax (8%)</dt><dd id="sum-tax">$0.00</dd></div>
+        <div class="grand"><dt>Total</dt><dd id="sum-total">$0.00</dd></div>
+      </dl>
+      <button id="checkout-btn" class="btn btn-primary btn-block" type="button">Checkout</button>
+      <button id="clear-cart" class="link-btn" type="button">Clear cart</button>
+    </div>
+  </aside>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title" hidden>
+    <div class="modal-content">
+      <button id="checkout-close" class="icon-btn modal-close" type="button" aria-label="Close checkout">✕</button>
+
+      <div id="checkout-step">
+        <h2 id="checkout-title">Checkout</h2>
+        <p class="modal-note">This is a simulation. No payment details are collected and no order is placed.</p>
+        <p id="guest-note" class="modal-note" hidden>Checking out as a guest. <a href="account.html?next=index.html">Sign in</a> to save your orders.</p>
+        <form id="checkout-form" class="form" novalidate>
+          <label>Full name
+            <input type="text" name="name" required maxlength="80" autocomplete="name" />
+          </label>
+          <label>Email
+            <input type="email" name="email" required maxlength="120" autocomplete="email" />
+          </label>
+          <label>Delivery address
+            <textarea name="address" rows="3" required maxlength="200" autocomplete="street-address"></textarea>
+          </label>
+          <p id="form-error" class="form-error" role="alert" hidden></p>
+          <div class="order-total"><span>Order total</span><strong id="checkout-total">$0.00</strong></div>
+          <button type="submit" class="btn btn-primary btn-block">Place order</button>
+        </form>
+      </div>
+
+      <div id="confirm-step" hidden>
+        <div class="confirm-icon" aria-hidden="true">✓</div>
+        <h2 id="confirm-title" tabindex="-1">Order confirmed</h2>
+        <p id="confirm-text" class="modal-note"></p>
+        <ul id="confirm-items" class="confirm-items"></ul>
+        <div class="order-total"><span>Total</span><strong id="confirm-total">$0.00</strong></div>
+        <a id="confirm-orders" class="btn btn-block link-block" href="profile.html#orders" hidden>View my orders</a>
+        <button id="confirm-done" class="btn btn-primary btn-block" type="button">Continue shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="common.js"></script>
+  <script src="fallback-products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
